@@ -2,13 +2,11 @@ package com.pickapp.services.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -27,12 +25,21 @@ public class User {
 	private String city;
 	private String state;
 	private BigDecimal credit;
+
+	public User() {
+	}
+
 	
-	@OneToMany(mappedBy = "user")
-    Set<UserRole> userRoles;
-	
-	@OneToMany(mappedBy = "user")
-    Set<Transaction> transactions;
+
+	public User(BigDecimal code, String email, BigDecimal credit, String name) {
+		super();
+		this.code = code;
+		this.email = email;
+		this.credit = credit;
+		this.name = name;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -120,14 +127,6 @@ public class User {
 
 	public void setCredit(BigDecimal credit) {
 		this.credit = credit;
-	}
-
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
 	}
 
 }
